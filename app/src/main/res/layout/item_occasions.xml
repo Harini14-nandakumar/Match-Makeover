@@ -13,7 +13,7 @@
     <TextView
         android:id="@+id/tvCategoryName"
         android:layout_width="239dp"
-        android:layout_height="65dp"
+        android:layout_height="63dp"
         android:gravity="center"
         android:text="Occasions"
         android:textColor="@color/white"

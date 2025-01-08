@@ -9,11 +9,11 @@
     <!-- Main Outfit Image -->
     <ImageView
         android:id="@+id/outfitImage"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:scaleType="centerCrop"
+        android:layout_width="280dp"
+        android:layout_height="292dp"
+        android:layout_gravity="center"
         android:background="#e0e0e0"
-        android:layout_gravity="center" />
+        android:scaleType="centerCrop" />
 
     <!-- Outfit Name -->
     <TextView
