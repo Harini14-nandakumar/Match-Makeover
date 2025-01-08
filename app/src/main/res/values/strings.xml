@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Match Makeover</string>
+    <string name="don_t_have_an_account">don\'t have an account ?</string>
+    <string name="genders">Genders</string>
+    <string name="gender">Genders</string>
+    <string name="enter">Enter</string>
+    <string name="match_makeover">Match Makeover</string>
+    <string name="products">Products</string>
+    <string name="select_gender">Select Gender</string>
+    <string name="male">Male</string>
+    <string name="shirts">shirts</string>
+    <string name="take_photo_description">PHOTO</string>
+    <string name="albums_description">PIC\n</string>
+    <string name="category_image">i\n</string>
+    <string name="example_string">It\'s a beautiful day</string>
+</resources>

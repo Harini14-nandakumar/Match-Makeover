@@ -1,0 +1,29 @@
+package com.example.matchmakeover
+
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
+
+class OccasionAdapter(
+    private val occasions: List<String>
+) : RecyclerView.Adapter<OccasionAdapter.OccasionViewHolder>() {
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OccasionViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_occasions, parent, false)
+        return OccasionViewHolder(view)
+    }
+
+    override fun onBindViewHolder(holder: OccasionViewHolder, position: Int) {
+        val occasion = occasions[position]
+        holder.getOccasionName().text = occasion
+        holder.itemView.setOnClickListener { TODO(occasion) }
+    }
+
+    override fun getItemCount(): Int = occasions.size
+
+    inner class OccasionViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        fun getOccasionName(): TextView = itemView.findViewById(R.id.tvCategoryName)
+    }
+}

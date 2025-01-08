@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="20dp">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="352dp"
+            android:layout_height="58dp"
+            android:layout_weight="1"
+            android:fontFamily="sans-serif"
+            android:gravity="center_horizontal"
+            android:text="Occasions"
+            android:textColor="#333"
+            android:textSize="35sp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/ivAddIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="68dp"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
+            android:contentDescription="Add Categories"
+            android:padding="10dp"
+            android:src="@android:drawable/ic_input_add"
+            app:tint="@color/black" />
+
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewCategories"
+        android:layout_width="377dp"
+        android:layout_height="773dp"
+        android:orientation="vertical"
+        tools:listitem="@layout/item_occasions" />
+</LinearLayout>

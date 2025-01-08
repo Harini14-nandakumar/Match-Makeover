@@ -1,0 +1,27 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp"
+    android:gravity="center_horizontal">
+
+    <!-- Main Outfit Image -->
+    <ImageView
+        android:id="@+id/outfitImage"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:scaleType="centerCrop"
+        android:background="#e0e0e0"
+        android:layout_gravity="center" />
+
+    <!-- Outfit Name -->
+    <TextView
+        android:id="@+id/outfitText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textSize="14sp"
+        android:textColor="#000000"
+        android:gravity="center" />
+</LinearLayout>

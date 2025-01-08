@@ -1,0 +1,38 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="16dp">
+
+
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="182dp"
+        android:layout_height="104dp"
+        android:layout_gravity="center"
+        android:paddingBottom="16dp"
+        android:text="Choose Colors"
+        android:textColor="@android:color/black"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <GridView
+        android:id="@+id/colorGrid"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:numColumns="10"
+        android:horizontalSpacing="2dp"
+        android:verticalSpacing="2dp" />
+
+    <TextView
+        android:id="@+id/selectedColorText"
+        android:layout_width="149dp"
+        android:layout_height="94dp"
+        android:layout_gravity="center"
+        android:paddingTop="16dp"
+        android:text="You Chose: "
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="italic" />
+</LinearLayout>

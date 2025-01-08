@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+
+        <TextView
+            android:id="@+id/textViewTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp"
+            android:text="Products"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textViewGender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Select Gender"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/spinnergender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:minHeight="48dp" />
+
+        <Button
+            android:id="@+id/buttonMale"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Male"
+            android:textColor="@color/black"
+            android:backgroundTint="#AD9A9A"
+            android:layout_marginTop="8dp" />
+
+        <Button
+            android:id="@+id/buttonFemale"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Female"
+            android:textColor="@color/black"
+            android:backgroundTint="#AD9A9A"
+            android:layout_marginTop="8dp" />
+
+        <Button
+            android:id="@+id/buttonKids"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Kids"
+            android:textColor="@color/black"
+            android:backgroundTint="#AD9A9A"
+            android:layout_marginTop="8dp" />
+
+        <TextView
+            android:id="@+id/textViewCategories"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Categories"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp" />
+
+        <Spinner
+            android:id="@+id/spinnerCategories"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:minHeight="48dp" />
+
+        <Button
+            android:id="@+id/buttonShirts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Shirts"
+            android:textColor="@color/black"
+            android:backgroundTint="#AD9A9A"
+            android:layout_marginTop="8dp" />
+
+        <Button
+            android:id="@+id/buttonTShirts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="T-shirts"
+            android:textColor="@color/black"
+            android:backgroundTint="#AD9A9A"
+            android:layout_marginTop="8dp" />
+
+        <Button
+            android:id="@+id/buttonJackets"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Jackets"
+            android:textColor="@color/black"
+            android:backgroundTint="#AD9A9A"
+            android:layout_marginTop="8dp" />
+
+        <Button
+            android:id="@+id/buttonCoats"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Coats"
+            android:textColor="@color/black"
+            android:backgroundTint="#AD9A9A"
+            android:layout_marginTop="8dp" />
+
+        <Button
+            android:id="@+id/buttonPants"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pants"
+            android:textColor="@color/black"
+            android:backgroundTint="#AD9A9A"
+            android:layout_marginTop="8dp" />
+
+        <Button
+            android:id="@+id/buttonTrousers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Trousers"
+            android:textColor="@color/black"
+            android:backgroundTint="#AD9A9A"
+            android:layout_marginTop="8dp" />
+
+        <TextView
+            android:id="@+id/textViewOccasions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Occasions"
+            android:textColor="@color/black"
+            android:backgroundTint="#AD9A9A"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp" />
+
+        <Spinner
+            android:id="@+id/spinnerOccasions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:minHeight="48dp" />
+
+
+        <Button
+            android:id="@+id/buttonFormal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Formal"
+            android:textColor="@color/black"
+            android:backgroundTint="#AD9A9A"
+            android:layout_marginTop="8dp" />
+
+        <Button
+            android:id="@+id/buttonCasual"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Casual"
+            android:textColor="@color/black"
+            android:backgroundTint="#AD9A9A"
+            android:layout_marginTop="8dp" />
+
+        <Button
+            android:id="@+id/buttonTravel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Travel"
+            android:textColor="@color/black"
+            android:backgroundTint="#AD9A9A"
+            android:layout_marginTop="8dp" />
+
+        <Button
+            android:id="@+id/buttonFestival"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Festival"
+            android:textColor="@color/black"
+            android:backgroundTint="#AD9A9A"
+            android:layout_marginTop="8dp" />
+
+        <Button
+            android:id="@+id/buttonPartywear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Partywear"
+            android:textColor="@color/black"
+            android:backgroundTint="#AD9A9A"
+            android:layout_marginTop="8dp" />
+
+        <Button
+            android:id="@+id/buttonCollege"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="College"
+            android:textColor="@color/black"
+            android:backgroundTint="#AD9A9A"
+            android:layout_marginTop="8dp" />
+
+        <!-- Select Colors -->
+        <TextView
+            android:id="@+id/textViewColors"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Colors"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp" />
+
+        <Spinner
+            android:id="@+id/spinnerColors"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:minHeight="48dp" />
+
+        <Button
+            android:id="@+id/buttonRed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Red"
+            android:textColor="@color/black"
+            android:backgroundTint="#AD9A9A"
+            android:layout_marginTop="8dp" />
+
+        <Button
+            android:id="@+id/buttonGreen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Green"
+            android:textColor="@color/black"
+            android:backgroundTint="#AD9A9A"
+            android:layout_marginTop="8dp" />
+
+        <Button
+            android:id="@+id/buttonBlue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Blue"
+            android:textColor="@color/black"
+            android:backgroundTint="#AD9A9A"
+            android:layout_marginTop="8dp" />
+
+        <Button
+            android:id="@+id/buttonYellow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Yellow"
+            android:textColor="@color/black"
+            android:backgroundTint="#AD9A9A"
+            android:layout_marginTop="8dp" />
+
+        <Button
+            android:id="@+id/buttonWhite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="White"
+            android:textColor="@color/black"
+            android:backgroundTint="#AD9A9A"
+            android:layout_marginTop="8dp" />
+
+        <Button
+            android:id="@+id/buttonPink"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pink"
+            android:textColor="@color/black"
+            android:backgroundTint="#AD9A9A"
+            android:layout_marginTop="8dp" />
+
+    </LinearLayout>
+</ScrollView>
