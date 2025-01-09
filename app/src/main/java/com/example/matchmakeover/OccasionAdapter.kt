@@ -5,9 +5,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.matchmakeover.response.Occasions
 
 class OccasionAdapter(
-    private val occasions: List<String>
+    private val occasions: MutableList<Occasions>
 ) : RecyclerView.Adapter<OccasionAdapter.OccasionViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OccasionViewHolder {
@@ -16,9 +17,9 @@ class OccasionAdapter(
     }
 
     override fun onBindViewHolder(holder: OccasionViewHolder, position: Int) {
-        val occasion = occasions[position]
-        holder.getOccasionName().text = occasion
-        holder.itemView.setOnClickListener { TODO(occasion) }
+        val occasions = occasions[position]
+        holder.getOccasionName().text = occasions.toString()
+        holder.itemView.setOnClickListener { TODO(occasions.toString()) }
     }
 
     override fun getItemCount(): Int = occasions.size

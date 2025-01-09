@@ -5,8 +5,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.matchmakeover.response.Categories
 
-class CategoriesAdapter(private val categories: List<String>) :
+class CategoriesAdapter(private val categories: MutableList<Categories>) :
     RecyclerView.Adapter<CategoriesAdapter.CategoryViewHolder>() {
 
     class CategoryViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -20,7 +21,7 @@ class CategoriesAdapter(private val categories: List<String>) :
     }
 
     override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
-        holder.tvCategoryName.text = categories[position]
+        holder.tvCategoryName.text = categories[position].name
     }
 
     override fun getItemCount(): Int = categories.size

@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.matchmakeover.api.ApiInterface
 import com.example.matchmakeover.api.RetrofitClient
 import com.example.matchmakeover.response.Gender
 import com.example.matchmakeover.response.GenderResponse
@@ -20,7 +21,8 @@ class Gender : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var genderAdapter: GenderAdapter
-    private val genderList = mutableListOf<Gender>()
+    private val genderList = mutableListOf<Gender>() // Dynamic list for genders
+    private val defaultGenders = listOf(Gender(0.toString(), "Male"), Gender(0.toString(), "Female")) // Static fallback list
 
     private lateinit var addButton: ImageButton
     private lateinit var titleTextView: TextView
@@ -51,14 +53,14 @@ class Gender : AppCompatActivity() {
         fetchGenders()
 
         // Set the title
-        titleTextView.text = "Select Gender"
+        titleTextView.text = "Genders"
     }
 
-    // Method to fetch gender list from the API
     private fun fetchGenders() {
-        val call = RetrofitClient.instance.gender() // Call the Retrofit API to fetch genders
+        val call = RetrofitClient.instance.create(ApiInterface::class.java).fetchgender()
 
         call.enqueue(object : Callback<GenderResponse> {
+            @SuppressLint("NotifyDataSetChanged")
             override fun onResponse(call: Call<GenderResponse>, response: Response<GenderResponse>) {
                 if (response.isSuccessful) {
                     val genderResponse = response.body()
@@ -67,16 +69,35 @@ class Gender : AppCompatActivity() {
                         genderList.addAll(genderResponse.genders)
                         genderAdapter.notifyDataSetChanged()
                     } else {
-                        Toast.makeText(this@Gender, "Failed to fetch genders", Toast.LENGTH_SHORT).show()
+                        showToast("No data from API, using defaults")
+                        useDefaultGenders()
                     }
                 } else {
-                    Toast.makeText(this@Gender, "Error fetching genders", Toast.LENGTH_SHORT).show()
+                    showToast("API error, using defaults")
+                    useDefaultGenders()
                 }
             }
 
             override fun onFailure(call: Call<GenderResponse>, t: Throwable) {
-                Toast.makeText(this@Gender, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
+                showToast("Network error, using defaults")
+                useDefaultGenders()
             }
         })
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    private fun useDefaultGenders() {
+        genderList.clear()
+        genderList.addAll(defaultGenders)
+        genderAdapter.notifyDataSetChanged()
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        fetchGenders()
     }
 }

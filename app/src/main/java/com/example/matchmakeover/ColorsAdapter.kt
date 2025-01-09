@@ -5,8 +5,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.matchmakeover.responsepackage.Color
 
-class ColorsAdapter(private val colorList: List<String>) :
+class ColorsAdapter(private val colorList: MutableList<Color>) :
     RecyclerView.Adapter<ColorsAdapter.ColorViewHolder>() {
 
     // ViewHolder class to hold the view reference
@@ -24,7 +25,7 @@ class ColorsAdapter(private val colorList: List<String>) :
     // Bind the data to the view holder
     override fun onBindViewHolder(holder: ColorViewHolder, position: Int) {
         // Set the color text to the TextView
-        holder.tvColor.text = colorList[position]
+        holder.tvColor.text = colorList[position].toString()
     }
 
     // Return the total number of items in the list

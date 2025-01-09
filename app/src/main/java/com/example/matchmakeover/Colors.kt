@@ -8,15 +8,32 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.matchmakeover.api.ApiInterface
+import com.example.matchmakeover.api.RetrofitClient
+import com.example.matchmakeover.responsepackage.Color
+import com.example.matchmakeover.responsepackage.ColorResponse
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class Colors : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var colorsAdapter: ColorsAdapter
-    private val colorsList = listOf("Red", "Blue", "White", "Green", "Pink", "Black")
+    private var colorsList = ArrayList<Color>()
 
     private lateinit var addButton: ImageButton
     private lateinit var titleTextView: TextView
+
+    // Static list for colors if the API fails
+//    private val defaultColors = listOf(
+//        Colors("Red"),
+//        Colors("Blue"),
+//        Colors("White"),
+//        Colors("Green"),
+//        Colors("Pink"),
+//        Colors("Black")
+//    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +59,50 @@ class Colors : AppCompatActivity() {
         }
 
         // Set the title
-        titleTextView.text = "Select a Color"
+        titleTextView.text = "Color"
+
+        // Fetch the colors from the API
+        fetchColors()
+    }
+
+    private fun fetchColors() {
+        // Use the API method to fetch colors
+        val call = RetrofitClient.instance.create(ApiInterface::class.java).fetchColors()
+
+        call.enqueue(object : Callback<ColorResponse> {
+            override fun onResponse(call: Call<ColorResponse>, response: Response<ColorResponse>) {
+                if (response.isSuccessful) {
+                    val colorResponse = response.body()
+                    if (colorResponse != null && colorResponse.status == "success") {
+                        colorsList.clear()
+                        response.body()!!.colors.forEach({ color ->
+                            colorsList.add(color)
+                        })
+                        colorsAdapter.notifyDataSetChanged()
+                    } else {
+                        showToast("Failed to fetch colors, using defaults.")
+//                        useDefaultColors()
+                    }
+                } else {
+                    showToast("Error fetching colors, using defaults.")
+//                    useDefaultColors()
+                }
+            }
+
+            override fun onFailure(call: Call<ColorResponse>, t: Throwable) {
+                showToast("Error: ${t.message}, using defaults.")
+//                useDefaultColors()
+            }
+        })
+    }
+
+//    private fun useDefaultColors() {
+//        colorsList.clear()
+//        colorsList.addAll(defaultColors)
+//        colorsAdapter.notifyDataSetChanged()
+//    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 }

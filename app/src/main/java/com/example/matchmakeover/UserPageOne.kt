@@ -1,6 +1,8 @@
 package com.example.matchmakeover
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -31,7 +33,20 @@ class UserPageOne : AppCompatActivity() {
         // Initialize and set the adapter
         itemAdapter = UserPageOneAdapter(items) // Pass the list of categories (items)
         recyclerView.adapter = itemAdapter
+
+        findViewById<Button>(R.id.buttonFemale).setOnClickListener {
+            val intent = Intent(this, UserPageTwo::class.java)
+            startActivity(intent)
+        }
+
+        findViewById<Button>(R.id.buttonKids).setOnClickListener {
+            val intent = Intent(this, UserPageThree::class.java)
+            startActivity(intent)
+        }
+
     }
+
+
 
     // Category data class for storing image resource and category name
     data class Category(val imageRes: Int, val name: String)

@@ -22,5 +22,5 @@ class GenderAdapter(private val genderList: MutableList<Gender>) : RecyclerView.
     override fun getItemCount(): Int = genderList.size
 
     class GenderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val genderNameTextView: TextView = itemView.findViewById(R.id.Genders)
+        val genderNameTextView: TextView = itemView.findViewById(R.id.tvCategoryName)
     }}
