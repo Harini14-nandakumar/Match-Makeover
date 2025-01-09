@@ -68,7 +68,7 @@ class ProductPage : AppCompatActivity() {
         buttonCasual.setOnClickListener { showToast("Casual occasion selected") }
         buttonTravel.setOnClickListener { showToast("Travel occasion selected") }
         buttonFestival.setOnClickListener { showToast("Festival occasion selected") }
-        buttonPartywear.setOnClickListener { showToast("Partywear occasion selected") }
+        buttonPartywear.setOnClickListener { showToast("Party wear occasion selected") }
         buttonCollege.setOnClickListener { showToast("College occasion selected") }
 
         buttonRed.setOnClickListener { showToast("Red color selected") }
