@@ -6,6 +6,7 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class UserPageOne : AppCompatActivity() {
 
@@ -31,22 +32,27 @@ class UserPageOne : AppCompatActivity() {
         )
 
         // Initialize and set the adapter
-        itemAdapter = UserPageOneAdapter(items) // Pass the list of categories (items)
+        itemAdapter = UserPageOneAdapter(items)
         recyclerView.adapter = itemAdapter
 
+        // Female button navigation
         findViewById<Button>(R.id.buttonFemale).setOnClickListener {
             val intent = Intent(this, UserPageTwo::class.java)
             startActivity(intent)
         }
 
+        // Kids button navigation
         findViewById<Button>(R.id.buttonKids).setOnClickListener {
             val intent = Intent(this, UserPageThree::class.java)
             startActivity(intent)
         }
 
+        // FloatingActionButton navigation to UserPageFour
+        findViewById<FloatingActionButton>(R.id.floatingActionButton2).setOnClickListener {
+            val intent = Intent(this, Colorgrid::class.java)
+            startActivity(intent)
+        }
     }
-
-
 
     // Category data class for storing image resource and category name
     data class Category(val imageRes: Int, val name: String)

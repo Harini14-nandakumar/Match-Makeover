@@ -1,39 +1,63 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
     android:background="@drawable/background"
     android:padding="16dp">
-
 
     <TextView
         android:id="@+id/titleText"
         android:layout_width="182dp"
-        android:layout_height="104dp"
-        android:layout_gravity="center"
-        android:paddingBottom="16dp"
+        android:layout_height="wrap_content"
         android:text="Choose Colors"
         android:textColor="@android:color/black"
         android:textSize="24sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="16dp" />
 
     <GridView
         android:id="@+id/colorGrid"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="300dp"
-        android:numColumns="10"
+        android:layout_marginTop="96dp"
         android:horizontalSpacing="2dp"
-        android:verticalSpacing="2dp" />
+        android:numColumns="10"
+        android:verticalSpacing="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titleText" />
 
     <TextView
         android:id="@+id/selectedColorText"
-        android:layout_width="149dp"
-        android:layout_height="94dp"
-        android:layout_gravity="center"
-        android:paddingTop="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="You Chose: "
         android:textColor="@android:color/black"
         android:textSize="18sp"
-        android:textStyle="italic" />
-</LinearLayout>
+        android:textStyle="italic"
+        app:layout_constraintTop_toBottomOf="@id/colorGrid"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/baseline_arrow_forward_24"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
