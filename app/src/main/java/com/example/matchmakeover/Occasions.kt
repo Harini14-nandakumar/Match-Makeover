@@ -52,7 +52,7 @@ class Occasions : AppCompatActivity() {
         }
 
         // Set the title
-        titleTextView.text = "Select an Occasion"
+        titleTextView.text =  "Occasion"
     }
 
     private fun fetchOccasions() {

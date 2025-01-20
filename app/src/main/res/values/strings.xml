@@ -14,4 +14,5 @@
     <string name="category_image">i\n</string>
     <string name="example_string">It\'s a beautiful day</string>
     <string name="colors">Colors</string>
+    <string name="username">Username</string>
 </resources>

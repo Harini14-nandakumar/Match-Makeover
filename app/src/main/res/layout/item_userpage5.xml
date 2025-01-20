@@ -7,15 +7,16 @@
     android:gravity="center_horizontal">
 
     <!-- Main Outfit Image -->
+
+    <!-- Outfit Name -->
     <ImageView
         android:id="@+id/outfitImage"
-        android:layout_width="280dp"
-        android:layout_height="292dp"
+        android:layout_width="320dp"
+        android:layout_height="401dp"
         android:layout_gravity="center"
         android:background="#e0e0e0"
         android:scaleType="centerCrop" />
 
-    <!-- Outfit Name -->
     <TextView
         android:id="@+id/outfitText"
         android:layout_width="wrap_content"

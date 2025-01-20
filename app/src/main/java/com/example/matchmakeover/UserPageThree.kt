@@ -1,9 +1,11 @@
 package com.example.matchmakeover
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class UserPageThree : AppCompatActivity() {
 
@@ -12,9 +14,9 @@ class UserPageThree : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_user_page3)  // Make sure the layout file exists
+        setContentView(R.layout.activity_user_page3) // Make sure the layout file exists
 
-        val recyclerView: RecyclerView = findViewById(R.id.recyclerViewCategories)  // RecyclerView ID
+        val recyclerView: RecyclerView = findViewById(R.id.recyclerViewCategories) // RecyclerView ID
 
         // List of items to be displayed in the RecyclerView
         val items = listOf(
@@ -29,7 +31,14 @@ class UserPageThree : AppCompatActivity() {
         )
 
         // Set the layout manager and the adapter for the RecyclerView
-        recyclerView.layoutManager = GridLayoutManager(this, 2)  // Display in 2 columns
-        recyclerView.adapter = UserPageThreeAdapter(items)  // Set the adapter
+        recyclerView.layoutManager = GridLayoutManager(this, 2) // Display in 2 columns
+        recyclerView.adapter = UserPageThreeAdapter(items) // Set the adapter
+
+        // Floating Action Button for navigation
+        val floatingButton: FloatingActionButton = findViewById(R.id.floatingActionButton2)
+        floatingButton.setOnClickListener {
+            val intent = Intent(this, Colorgrid::class.java) // Replace with the target activity
+            startActivity(intent)
+        }
     }
 }

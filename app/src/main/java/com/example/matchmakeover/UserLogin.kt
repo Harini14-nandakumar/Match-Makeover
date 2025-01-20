@@ -17,10 +17,6 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-private operator fun Boolean.invoke(value: () -> Unit) {
-
-}
-
 class UserLogin : AppCompatActivity() {
 
     private lateinit var context: Context
@@ -56,18 +52,23 @@ class UserLogin : AppCompatActivity() {
 
     private fun login(username: String, password: String) {
         val request = LoginRequest(username, password)
-        val call = RetrofitClient.instance.create(ApiInterface::class.java).userLogin (request)
+        val call = RetrofitClient.instance.create(ApiInterface::class.java).userLogin(request)
 
         call.enqueue(object : Callback<LoginResponse> {
-            override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
+            override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) =
                 if (response.isSuccessful) {
                     val loginResponse = response.body()
                     if (loginResponse?.status == true) {
                         Toast.makeText(context, "Login Successful!", Toast.LENGTH_SHORT).show()
 
-                        // Navigate to the next page on successful login
-                        val intent = Intent(context, UserPageOne::class.java)
-                        startActivity(intent)
+                        // Check the role of the user and navigate accordingly
+                        if (loginResponse.role == "admin") { // Assuming `role` is provided in the API response
+                            val intent = Intent(context, AdminPage::class.java)
+                            startActivity(intent)
+                        } else {
+                            val intent = Intent(context, UserPageOne::class.java)
+                            startActivity(intent)
+                        }
                         finish()
                     } else {
                         Toast.makeText(context, loginResponse?.message ?: "Login failed", Toast.LENGTH_SHORT).show()
@@ -75,10 +76,9 @@ class UserLogin : AppCompatActivity() {
                 } else {
                     Toast.makeText(context, "Invalid credentials, please try again.", Toast.LENGTH_SHORT).show()
                 }
-            }
 
             override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                Toast.makeText(context, "Server error ",Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Server error ", Toast.LENGTH_SHORT).show()
             }
         })
     }

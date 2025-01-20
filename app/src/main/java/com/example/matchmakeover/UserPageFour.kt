@@ -1,10 +1,12 @@
 package com.example.matchmakeover
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class UserPageFour : AppCompatActivity() {
 
@@ -29,5 +31,13 @@ class UserPageFour : AppCompatActivity() {
         // Set up RecyclerView layout manager and adapter
         recyclerView.layoutManager = GridLayoutManager(this, 2) // 2 columns
         recyclerView.adapter = UserPageFourAdapter(items) // Pass the list to the adapter
+
+        // Set up FloatingActionButton for navigation
+        val floatingActionButton: FloatingActionButton = findViewById(R.id.floatingActionButton2)
+        floatingActionButton.setOnClickListener {
+            // Navigate to UserPageFive
+            val intent = Intent(this, UserPageFive::class.java)
+            startActivity(intent)
+        }
     }
 }

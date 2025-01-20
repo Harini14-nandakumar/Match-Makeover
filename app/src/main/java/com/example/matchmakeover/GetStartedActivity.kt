@@ -23,9 +23,22 @@ class GetStartedActivity : AppCompatActivity() {
 
         // Navigate to the next activity after a delay
         Handler(Looper.getMainLooper()).postDelayed({
-            val intent = Intent(this, AdminLogin::class.java)
+            // Example: Decide where to navigate based on a condition
+            val isAdmin = checkUserType() // Replace with your logic
+            val intent = if (isAdmin) {
+                Intent(this, AdminLogin::class.java) // Navigate to AdminLogin
+            } else {
+                Intent(this, UserLogin::class.java) // Navigate to UserLogin
+            }
             startActivity(intent)
-            finish()
+            finish() // Finish the current activity so it doesn't remain in the back stack
         }, 3000) // 3-second delay
+    }
+
+    // Example function to determine the user type
+    private fun checkUserType(): Boolean {
+        // Replace this with your actual logic to determine the user type
+        // For example, check a flag in SharedPreferences or pass data from a previous screen
+        return false // Return true for admin, false for user
     }
 }

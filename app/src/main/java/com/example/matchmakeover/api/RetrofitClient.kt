@@ -12,7 +12,5 @@ object RetrofitClient {
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create()) // Gson for JSON conversion
             .build()
-
-
     }
 }
