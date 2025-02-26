@@ -1,4 +1,4 @@
-package com.example.matchmakeover.responsepackage
+package com.example.matchmakeover.response
 
 data class ColorResponse(
     val status: String,
@@ -6,5 +6,5 @@ data class ColorResponse(
 )
 
 data class Color(
-    val name: String  // The name of the color, e.g., "Red", "Blue", etc.
+    val name: String
 )

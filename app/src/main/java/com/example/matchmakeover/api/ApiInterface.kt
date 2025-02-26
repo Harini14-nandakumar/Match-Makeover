@@ -1,51 +1,57 @@
 package com.example.matchmakeover.api
 
-import com.example.matchmakeover.response.CategoriesResponse
-import com.example.matchmakeover.response.GenderRequest
-import com.example.matchmakeover.response.GenderResponse
-import com.example.matchmakeover.response.LoginRequest
-import com.example.matchmakeover.response.LoginResponse
-import com.example.matchmakeover.response.NewCategoriesRequest
-import com.example.matchmakeover.response.NewCategoriesResponse
-import com.example.matchmakeover.response.NewGenderResponse
-import com.example.matchmakeover.response.OccasionsResponse
-import com.example.matchmakeover.response.UserRequest
-import com.example.matchmakeover.response.UserResponse
-import com.example.matchmakeover.responsepackage.ColorResponse
+import com.example.matchmakeover.response.*
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.Headers
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface ApiInterface {
 
     @Headers("Content-Type: application/json")
-    @POST("matchmakeover/signup.php") // Path to the signup API endpoint
+    @POST("matchmakeover/signup.php")
     fun signUpUser(@Body userRequest: UserRequest): Call<UserResponse>
 
     @Headers("Content-Type: application/json")
-    @POST("matchmakeover/login.php") // Path to the login API endpoint
-    fun userLogin(@Body loginRequest: LoginRequest): Call<LoginResponse> // Renamed function to follow standard naming conventions
+    @POST("matchmakeover/login.php")
+    fun userLogin(@Body loginRequest: LoginRequest): Call<LoginResponse>
 
-   @Headers("Content-Type: application/json")
-   @GET("matchmakeover/genders.php")  // The endpoint URL for your genders
-   fun fetchgender(): Call<GenderResponse>
+    @Headers("Content-Type: application/json")
+    @GET("matchmakeover/genders.php")
+    fun fetchGenders(): Call<GenderResponse>
 
     @Headers("Content-Type: application/json")
     @POST("matchmakeover/newgenders.php")
     fun addGender(@Body request: GenderRequest): Call<NewGenderResponse>
 
-    @GET("matchmakeover/categories.php") // Endpoint to fetch categories
-    fun fetchCategories(): Call<CategoriesResponse>
+    @Headers("Content-Type: application/json")
+    @GET("matchmakeover/categories.php")
+    fun fetchCategories(@Query("gender") gender: String = "all"): Call<ClothingResponse>
 
-    @POST("categories/add")
+    @Headers("Content-Type: application/json")
+    @POST("matchmakeover/categories/add.php")
     fun addCategory(@Body categoryRequest: NewCategoriesRequest): Call<NewCategoriesResponse>
 
-    @GET("occasions.php")
+    @Headers("Content-Type: application/json")
+    @GET("matchmakeover/occasions.php")
     fun fetchOccasions(): Call<OccasionsResponse>
 
-    @GET("colors.php")
+    @Headers("Content-Type: application/json")
+    @POST("matchmakeover/occasions/add.php") // Added missing annotation
+    fun addOccasion(@Body occasionRequest: NewOccasionsRequest): Call<NewOccasionsResponse> // Fixed return type
+
+    @Headers("Content-Type: application/json")
+    @GET("matchmakeover/colors.php")
     fun fetchColors(): Call<ColorResponse>
 
+    @Headers("Content-Type: application/json")
+    @GET("matchmakeover/fetchproduct.php")
+    fun getProducts(
+        @Query("genderid") genderId: Int? = null,
+        @Query("categoriesid") categoryId: Int? = null,
+        @Query("occasionsid") occasionId: Int? = null,
+        @Query("coloursid") colourId: Int? = null
+    ): Call<ProductResponse> // Fetch filtered products
+
+    @Headers("Content-Type: application/json")
+    @POST("matchmakeover/geminiai.php")
+    fun sendMessage(@Body request: ChatRequest): Call<ChatResponse> // Send message to AI chat system
 }

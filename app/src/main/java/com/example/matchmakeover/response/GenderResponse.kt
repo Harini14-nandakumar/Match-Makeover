@@ -1,11 +1,16 @@
 package com.example.matchmakeover.response
 
-data class Gender(
-    val id: String,
-    val name: String
-)
+import java.util.ArrayList
+
+
 data class GenderResponse(
     val status: String,
     val message: String,
-    val genders: List<Gender>
+    val genders: ArrayList<Gender>
 )
+
+data class Gender(
+    val id: Int,
+    val name: String
+)
+

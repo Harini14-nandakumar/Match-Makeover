@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -52,7 +53,7 @@ class UserLogin : AppCompatActivity() {
 
     private fun login(username: String, password: String) {
         val request = LoginRequest(username, password)
-        val call = RetrofitClient.instance.create(ApiInterface::class.java).userLogin(request)
+        val call = RetrofitClient.retrofitInstance.create(ApiInterface::class.java).userLogin(request)
 
         call.enqueue(object : Callback<LoginResponse> {
             override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) =
@@ -79,6 +80,7 @@ class UserLogin : AppCompatActivity() {
 
             override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
                 Toast.makeText(context, "Server error ", Toast.LENGTH_SHORT).show()
+                Log.d("TAG", "onFailure: " + t.message)
             }
         })
     }

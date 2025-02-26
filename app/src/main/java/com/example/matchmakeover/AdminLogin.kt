@@ -25,21 +25,36 @@ class AdminLogin : AppCompatActivity() {
 
         // Set an OnClickListener for the login button
         loginButton.setOnClickListener {
-            // Get the values entered by the user
-            val username = usernameEditText.text.toString()
-            val password = passwordEditText.text.toString()
+            handleLogin()
+        }
+    }
 
+    private fun handleLogin() {
+        // Get the values entered by the user
+        val username = usernameEditText.text.toString().trim()
+        val password = passwordEditText.text.toString().trim()
 
-            // Check if any field is empty
-            if (username.isEmpty() || password.isEmpty()) {
-                Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show()
-            } else {
-                // Perform login logic here (e.g., validate credentials)
-                // For now, just show a success message
-                Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show()
+        // Check if any field is empty
+        if (username.isBlank() || password.isBlank()) {
+            Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show()
+        } else if (isValidAdmin(username, password)) {
+            // Perform successful login action
+            Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show()
 
-                // Navigate to the AdminPage activity after successful login
-                val intent = Intent(this, AdminPage::class.java)
-                startActivity(intent)
-            }
-        }}}
+            // Navigate to the AdminPage activity
+            val intent = Intent(this, AdminPage::class.java)
+            startActivity(intent)
+            finish() // Optional: Close this activity to prevent returning to it
+        } else {
+            // Show error for invalid credentials
+            Toast.makeText(this, "Invalid username or password", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun isValidAdmin(username: String, password: String): Boolean {
+        // Replace this logic with actual validation (e.g., server authentication or hardcoded admin credentials)
+        val adminUsername = "admin"
+        val adminPassword = "admin123"
+        return username == adminUsername && password == adminPassword
+    }
+}

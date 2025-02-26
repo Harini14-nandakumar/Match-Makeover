@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.matchmakeover.responsepackage.Color
+import com.example.matchmakeover.response.Color
 
 class ColorsAdapter(private val colorList: MutableList<Color>) :
     RecyclerView.Adapter<ColorsAdapter.ColorViewHolder>() {

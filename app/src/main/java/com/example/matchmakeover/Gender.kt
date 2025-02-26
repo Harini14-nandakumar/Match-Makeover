@@ -22,7 +22,6 @@ class Gender : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var genderAdapter: GenderAdapter
     private val genderList = mutableListOf<Gender>() // Dynamic list for genders
-    private val defaultGenders = listOf(Gender(0.toString(), "Male"), Gender(0.toString(), "Female")) // Static fallback list
 
     private lateinit var addButton: ImageButton
     private lateinit var titleTextView: TextView
@@ -57,7 +56,7 @@ class Gender : AppCompatActivity() {
     }
 
     private fun fetchGenders() {
-        val call = RetrofitClient.instance.create(ApiInterface::class.java).fetchgender()
+        val call = RetrofitClient.retrofitInstance.create(ApiInterface::class.java).fetchGenders()
 
         call.enqueue(object : Callback<GenderResponse> {
             @SuppressLint("NotifyDataSetChanged")
@@ -88,7 +87,6 @@ class Gender : AppCompatActivity() {
     @SuppressLint("NotifyDataSetChanged")
     private fun useDefaultGenders() {
         genderList.clear()
-        genderList.addAll(defaultGenders)
         genderAdapter.notifyDataSetChanged()
     }
 

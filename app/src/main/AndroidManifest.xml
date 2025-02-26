@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.matchmakeover">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -16,139 +16,83 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
 
+        <!-- Entry for UserPage6 -->
+        <activity
+            android:name=".Chatbox"
+            android:exported="true" /> <!-- Ensuring the activity is exported if needed -->
         <activity
             android:name=".UserPageFive"
             android:exported="true"
-            tools:ignore="Instantiatable">
-
-        </activity>
-
+            tools:ignore="Instantiatable" />
         <activity
             android:name=".AdminLogin"
-            android:exported="true">
-
-        </activity>
-
+            android:exported="true" />
         <activity
             android:name=".UserPageFour"
             android:exported="true"
-            tools:ignore="Instantiatable">
-
-        </activity>
-
+            tools:ignore="Instantiatable" />
         <activity
             android:name=".Colorgrid"
-            android:exported="true">
-
-        </activity>
-
+            android:exported="true" />
         <activity
             android:name=".UserPageThree"
-            android:exported="true">
-
-        </activity>
-
+            android:exported="true" />
         <activity
             android:name=".UserPageTwo"
             android:exported="true"
-            tools:ignore="Instantiatable">
-
-        </activity>
-
+            tools:ignore="Instantiatable" />
         <activity
             android:name=".UserPageOne"
             android:exported="true"
-            tools:ignore="Instantiatable">
-
-        </activity>
-
+            tools:ignore="Instantiatable" />
         <activity
             android:name=".NewColors"
-            android:exported="true">
-
-        </activity>
-
+            android:exported="true" />
         <activity
             android:name=".Colors"
-            android:exported="true">
-
-        </activity>
-
+            android:exported="true" />
         <activity
             android:name=".NewOccasions"
-            android:exported="true">
-
-        </activity>
-
+            android:exported="true" />
         <activity
             android:name=".Occasions"
-            android:exported="true">
-
-        </activity>
-
+            android:exported="true" />
         <activity
             android:name=".NewCategories"
-            android:exported="true">
-
-        </activity>
-
+            android:exported="true" />
         <activity
             android:name=".Categories"
-            android:exported="true">
-
-        </activity>
-
+            android:exported="true" />
         <activity
             android:name=".ImageUpload"
-            android:exported="true">
-
-        </activity>
-
+            android:exported="true" />
         <activity
             android:name=".ProductPage"
-            android:exported="true">
-
-        </activity>
-
+            android:exported="true" />
         <activity
             android:name=".Gender"
-            android:exported="true">
-
-        </activity>
-
+            android:exported="true" />
         <activity
             android:name=".NewGender"
-            android:exported="true">
-
-        </activity>
-
+            android:exported="true" />
         <activity
             android:name=".AdminPage"
-            android:exported="true">
-
-        </activity>
-
+            android:exported="true" />
         <activity
             android:name=".SignupPage"
-            android:exported="true">
-
-        </activity>
-
+            android:exported="true" />
         <activity
             android:name=".UserLogin"
-            android:exported="true">
-
-        </activity>
-
+            android:exported="true" />
         <activity
             android:name=".GetStartedActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>

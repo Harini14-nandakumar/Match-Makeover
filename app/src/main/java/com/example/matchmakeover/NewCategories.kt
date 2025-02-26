@@ -43,7 +43,7 @@ class NewCategories : AppCompatActivity() {
         val categoryRequest = NewCategoriesRequest(categoryName)
 
         // Create Retrofit instance and ApiInterface
-        val apiInterface = RetrofitClient.instance.create(ApiInterface::class.java)
+        val apiInterface = RetrofitClient.retrofitInstance.create(ApiInterface::class.java)
 
         // Make the API call
         apiInterface.addCategory(categoryRequest).enqueue(object : Callback<NewCategoriesResponse> {

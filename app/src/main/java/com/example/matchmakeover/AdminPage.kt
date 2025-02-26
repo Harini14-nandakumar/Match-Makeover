@@ -17,7 +17,7 @@ class AdminPage : AppCompatActivity() {
         val buttonOccasions: Button = findViewById(R.id.button4)
         val buttonColors: Button = findViewById(R.id.button5)
         val buttonProducts: Button = findViewById(R.id.button6)
-        val buttonImageUpload: Button = findViewById(R.id.button7)
+
 
         // Set OnClickListener for buttonGenders
         buttonGenders.setOnClickListener {
@@ -49,10 +49,6 @@ class AdminPage : AppCompatActivity() {
             startActivity(intent)
         }
 
-        // Set OnClickListener for buttonImageUpload
-        buttonImageUpload.setOnClickListener {
-            val intent = Intent(this, ImageUpload::class.java)
-            startActivity(intent)
-        }
+
     }
 }

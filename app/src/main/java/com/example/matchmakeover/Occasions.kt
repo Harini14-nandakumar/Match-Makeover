@@ -21,7 +21,7 @@ class Occasions : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var occasionAdapter: OccasionAdapter
-    private val occasionsList = mutableListOf<Occasions>() // Empty mutable list for dynamic data
+    private val occasionsList = mutableListOf<Occasions>() // Dynamic list for occasions
 
     private lateinit var addButton: ImageButton
     private lateinit var titleTextView: TextView
@@ -41,45 +41,51 @@ class Occasions : AppCompatActivity() {
         occasionAdapter = OccasionAdapter(occasionsList)
         recyclerView.adapter = occasionAdapter
 
-        // Fetch occasions from the API
-        fetchOccasions()
-
-        // Handle Add button click
+        // Set up Add button click listener
         addButton.setOnClickListener {
-            Toast.makeText(this, "Add Occasions clicked", Toast.LENGTH_SHORT).show()
             val intent = Intent(this, NewOccasions::class.java)
             startActivity(intent)
         }
 
+        // Fetch occasions from the API
+        fetchOccasions()
+
         // Set the title
-        titleTextView.text =  "Occasion"
+        titleTextView.text = "Occasions"
     }
 
     private fun fetchOccasions() {
-        // Use Retrofit to call the API
-        val api = RetrofitClient.instance.create(ApiInterface::class.java)
-        val call = api.fetchOccasions()
+        val call = RetrofitClient.retrofitInstance.create(ApiInterface::class.java).fetchOccasions()
 
         call.enqueue(object : Callback<OccasionsResponse> {
             @SuppressLint("NotifyDataSetChanged")
             override fun onResponse(call: Call<OccasionsResponse>, response: Response<OccasionsResponse>) {
                 if (response.isSuccessful) {
-                    val body = response.body()
-                    if (body != null && body.status == "success") {
+                    val occasionResponse = response.body()
+                    if (occasionResponse != null && occasionResponse.status == "success") {
                         occasionsList.clear()
-                        occasionsList.addAll(body.occasions)
+                        occasionsList.addAll(occasionResponse.occasions)
                         occasionAdapter.notifyDataSetChanged()
                     } else {
-                        Toast.makeText(this@Occasions, "Failed: ${body?.message}", Toast.LENGTH_SHORT).show()
+                        showToast("No occasions data found!")
                     }
                 } else {
-                    Toast.makeText(this@Occasions, "Error: ${response.message()}", Toast.LENGTH_SHORT).show()
+                    showToast("API error: ${response.message()}")
                 }
             }
 
             override fun onFailure(call: Call<OccasionsResponse>, t: Throwable) {
-                Toast.makeText(this@Occasions, "Network Error: ${t.message}", Toast.LENGTH_SHORT).show()
+                showToast("Network error: ${t.message}")
             }
         })
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        fetchOccasions()
     }
 }

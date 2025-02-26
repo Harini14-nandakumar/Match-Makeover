@@ -10,8 +10,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.matchmakeover.api.ApiInterface
 import com.example.matchmakeover.api.RetrofitClient
-import com.example.matchmakeover.responsepackage.Color
-import com.example.matchmakeover.responsepackage.ColorResponse
+import com.example.matchmakeover.response.Color
+import com.example.matchmakeover.response.ColorResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -67,7 +67,7 @@ class Colors : AppCompatActivity() {
 
     private fun fetchColors() {
         // Use the API method to fetch colors
-        val call = RetrofitClient.instance.create(ApiInterface::class.java).fetchColors()
+        val call = RetrofitClient.retrofitInstance.create(ApiInterface::class.java).fetchColors()
 
         call.enqueue(object : Callback<ColorResponse> {
             override fun onResponse(call: Call<ColorResponse>, response: Response<ColorResponse>) {

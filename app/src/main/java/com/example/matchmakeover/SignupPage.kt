@@ -62,7 +62,7 @@ class SignupPage : AppCompatActivity() {
 
     private fun signup(name: String, username: String, password: String, email: String) {
         val request = UserRequest(name, username, email, password, "user")
-        val call = RetrofitClient.instance.create(ApiInterface::class.java).signUpUser(request)
+        val call = RetrofitClient.retrofitInstance.create(ApiInterface::class.java).signUpUser(request)
 
         call.enqueue(object : Callback<UserResponse> {
             override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
@@ -70,9 +70,9 @@ class SignupPage : AppCompatActivity() {
                     val responseBody = response.body()
                     if (responseBody != null && responseBody.status == "success") {
                         Toast.makeText(context, responseBody.message, Toast.LENGTH_SHORT).show()
-                        Log.d("Signup", "Navigating to UserPageOne")
+                        Log.d("Signup", "Navigating to com.example.matchmakeover.UserPageOne")
 
-                        // Navigate to UserPageOne
+                        // Navigate to com.example.matchmakeover.UserPageOne
                         val intent = Intent(this@SignupPage, UserPageOne::class.java)
                         startActivity(intent)
                         finish()
